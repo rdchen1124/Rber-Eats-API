@@ -1,0 +1,23 @@
+{
+  "name": "rber-eats-api",
+  "version": "1.0.0",
+  "description": "Restful API as backend of Rber-Eats React App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rdchen1124/Rber-Eats-API.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rdchen1124/Rber-Eats-API/issues"
+  },
+  "homepage": "https://github.com/rdchen1124/Rber-Eats-API#readme",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "express": "^4.17.2"
+  }
+}
