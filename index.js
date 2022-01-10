@@ -1,9 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('./models');
+const storeController = require('./controllers/store');
 const app = express();
 const port = 3000;
-const Store = db.Store;
 const Meal = db.Meal;
 
 //設定 middleware : body-parser
@@ -17,58 +17,11 @@ app.get('/', (req, res) => {
   res.send('Hello World');
 })
 
-app.get('/store', (req, res) => {
-  let searchOption = {
-    order: [
-      ['id', 'ASC']
-    ]
-  };
-  if(req.query._limit){
-    const limit = +req.query._limit;
-    searchOption.limit = limit;
-  }
-  if(req.query._offset){
-    const offset = +req.query._offset;
-    searchOption.offset = offset;
-  }
-  Store.findAll(searchOption).then(data =>{
-    res.json(data);
-  }).catch(err => {
-    res.json({
-      error: err.toString()
-    })
-  });
-})
+app.get('/store', storeController.getAllStore);
 
-app.get('/store/:id', (req, res) => {
-  const {id} = req.params;
-  Store.findOne({
-    where: {
-      id: +id
-    }
-  }).then(store => {
-    res.json(store);
-  }).catch(err => {
-    res.json({
-      error: err.toString()
-    })
-  });
-  
-});
+app.get('/store/:id', storeController.getOneStore);
 
-app.post('/store', (req, res) => {
-  const {name, type, image, score} = req.body;
-  Store.create({
-    name,
-    type,
-    image,
-    score
-  }).then(()=>{
-    res.json({
-      ok: 1
-    })
-  })
-})
+app.post('/store', storeController.postNewStore);
 
 app.get('/meal', (req, res) => {
   let searchOption = {
