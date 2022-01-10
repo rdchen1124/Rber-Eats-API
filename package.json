@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/rdchen1124/Rber-Eats-API#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.19.1",
     "express": "^4.17.2",
     "mysql2": "^2.3.3",
