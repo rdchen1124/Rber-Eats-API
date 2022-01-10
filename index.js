@@ -32,6 +32,8 @@ app.get('/user', userController.getAuthUser);
 
 app.post('/user', userController.postNewUser);
 
+app.get('/article', userController.getArticle);
+
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`)
 })
