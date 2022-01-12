@@ -4,7 +4,8 @@ const db = require('./models');
 const storeController = require('./controllers/store');
 const mealController = require('./controllers/meal');
 const userController = require('./controllers/user');
-const orderController = require('./controllers/order');
+// const orderController = require('./controllers/order');
+const orderRouter = require('./routes/order');
 const app = express();
 const port = 3000;
 
@@ -33,9 +34,7 @@ app.get('/user', userController.getAuthUser);
 
 app.post('/user', userController.postNewUser);
 
-app.get('/order', orderController.getAllOrder);
-
-app.post('/order', orderController.postNewOrder);
+app.use('/order', orderRouter);
 
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`)
