@@ -11,7 +11,6 @@ const orderController = {
       if(err){
         res.status(401).json({err: "jwt failed"});
       }else{
-        console.log('jwt:', decode);
         let searchOption = {
           order: [
             ['id', 'DESC']
@@ -33,7 +32,6 @@ const orderController = {
         ).then(data => {
           const orders = JSON.parse(JSON.parse(data[0].order));
           console.log('orders', orders);
-          // console.log('order', orders[0]);
           res.json(data);
         }).catch(err => {
           res.json({err: err.toString()});
