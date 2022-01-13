@@ -1,13 +1,13 @@
+ // require and configure dotenv, will load vars in .env in PROCESS.ENV
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
-const db = require('./models');
 const storeController = require('./controllers/store');
 const mealController = require('./controllers/meal');
 const userController = require('./controllers/user');
-// const orderController = require('./controllers/order');
 const orderRouter = require('./routes/order');
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
 //設定 middleware : body-parser
 // parse application/x-www-form-urlencoded
@@ -37,5 +37,5 @@ app.post('/user', userController.postNewUser);
 app.use('/order', orderRouter);
 
 app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}`)
+  console.log(`[NODE_ENV > ${process.env.NODE_ENV}], Listening at http://localhost:${port}`)
 })
