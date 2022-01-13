@@ -9,7 +9,7 @@ const orderController = {
     const token = req.token;
     jwt.verify(token, private_key, (err, decode) => {
       if(err){
-        res.json({err: err.toString()});
+        res.status(401).json({err: "jwt failed"});
       }else{
         console.log('jwt:', decode);
         let searchOption = {
@@ -31,8 +31,8 @@ const orderController = {
         }
         Order.findAll(searchOption
         ).then(data => {
-          console.log('data', JSON.stringify(data, null, 4));
-          // const orders = JSON.parse(JSON.parse(data[0].order));
+          const orders = JSON.parse(JSON.parse(data[0].order));
+          console.log('orders', orders);
           // console.log('order', orders[0]);
           res.json(data);
         }).catch(err => {
@@ -47,7 +47,7 @@ const orderController = {
     const token = req.token;
     jwt.verify(token, private_key, (err, decode) => {
       if(err){
-        res.json({err: err.toString()});
+        res.status(401).json({err: "jwt failed"});
       }else{
         console.log('jwt:', decode);
         Order.create({
