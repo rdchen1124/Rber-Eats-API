@@ -30,8 +30,9 @@ const orderController = {
         }
         Order.findAll(searchOption
         ).then(data => {
-          const orders = JSON.parse(JSON.parse(data[0].order));
-          console.log('orders', orders);
+          console.log('data', JSON.stringify(data, null, 4));
+          // const orders = JSON.parse(JSON.parse(data[0].order));
+          // console.log('orders', orders);
           res.json(data);
         }).catch(err => {
           res.json({err: err.toString()});

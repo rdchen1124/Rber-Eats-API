@@ -4,7 +4,9 @@
   "description": "Restful API as backend of Rber-Eats React App",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js",
+    "db:migrate": "npx sequelize-cli db:migrate"
   },
   "repository": {
     "type": "git",

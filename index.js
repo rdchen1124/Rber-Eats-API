@@ -37,5 +37,5 @@ app.post('/user', userController.postNewUser);
 app.use('/order', orderRouter);
 
 app.listen(port, () => {
-  console.log(`[NODE_ENV > ${process.env.NODE_ENV}], Listening at http://localhost:${port}`)
+  console.log(`Listening at http://localhost:${port}`);
 })
