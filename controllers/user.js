@@ -13,7 +13,7 @@ const userController = {
       }
     }).then(user => {
       if(!user){
-        res.send({err: `${username} is not defined.`});
+        res.json({err: `${username} is not defined.`});
       }else{
         bcrypt.compare(password, user.password
         ).then(result => {
@@ -22,15 +22,15 @@ const userController = {
               user_id: user.id,
               user_name: user.username
             };
-            const token = jwt.sign({payload, exp: Math.floor(Date.now() / 1000) + (60 * 60 * 12)}, private_key);
-            res.send({ok: 1, token});
+            const token = jwt.sign({payload, exp: Math.floor(Date.now() / 1000) + (60 * 60 * 24)}, private_key);
+            res.json({ok: 1, token});
           }else{
-            res.send({err: 'password is incorrect.'});
+            res.json({err: 'password is incorrect.'});
           }
         })
       }
     }).catch(err => {
-      res.send({err: err.toString()});
+      res.json({err: err.toString()});
     })
   },
   postNewUser: (req, res) => {
