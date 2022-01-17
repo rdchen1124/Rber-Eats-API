@@ -36,13 +36,15 @@ const userController = {
   postNewUser: (req, res) => {
     const user = {
       username: req.body.username,
-      password: req.body.password
+      password: req.body.password,
+      favorites: req.body.favorites
     };
     bcrypt.hash(user.password, saltRounds
     ).then(hash => {
       User.create({
         username: user.username,
-        password: hash
+        password: hash,
+        favorites: user.favorites
       }).then(() => {
         res.json({ok: 1});
       }).catch(err => {
