@@ -53,6 +53,22 @@ const userController = {
     }).catch(err => {
       res.json({err: err.toString()});
     });
+  },
+  patchUserFavorites: (req, res) => {
+    const {favorites} = req.body;
+    const id = +req.params.id;
+    User.update({
+      favorites
+    },{
+      where: {
+        id
+      }
+    }).then((data)=>{
+      console.log('res:', JSON.stringify(data));
+      res.json({ok: 1});
+    }).catch(err => {
+      res.json({err: err.toString()});
+    });
   }
 }
 
