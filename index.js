@@ -2,6 +2,7 @@
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const storeController = require('./controllers/store');
 const mealController = require('./controllers/meal');
 const userRouter = require('./routes/user');
@@ -15,6 +16,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
 app.use(bodyParser.json());
+
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.send('Hello World');
