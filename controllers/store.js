@@ -3,6 +3,7 @@ const Store = db.Store;
 const storeController = {
   getAllStore: (req, res) => {
     let searchOption = {
+      attributes: ['id', 'name', 'type', 'image', 'score'],
       order: [
         ['id', 'ASC']
       ]
@@ -26,6 +27,7 @@ const storeController = {
   getOneStore: (req, res) => {
     const {id} = req.params;
     Store.findOne({
+      attributes: ['id', 'name', 'type', 'image', 'score'],
       where: {
         id: +id
       }
