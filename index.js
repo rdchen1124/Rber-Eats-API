@@ -4,7 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const storeController = require('./controllers/store');
 const mealController = require('./controllers/meal');
-const userController = require('./controllers/user');
+const userRouter = require('./routes/user');
 const orderRouter = require('./routes/order');
 const app = express();
 const port = process.env.PORT;
@@ -30,9 +30,7 @@ app.get('/meal', mealController.getAllMeal);
 
 app.get('/meal/:id', mealController.getOneMeal);
 
-app.get('/user', userController.getAuthUser);
-
-app.post('/user', userController.postNewUser);
+app.use('/user', userRouter);
 
 app.use('/order', orderRouter);
 
