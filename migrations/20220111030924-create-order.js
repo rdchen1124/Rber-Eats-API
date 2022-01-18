@@ -14,6 +14,12 @@ module.exports = {
       order: {
         type: Sequelize.JSON
       },
+      remark: {
+        type: Sequelize.JSON
+      },
+      totalAmount: {
+        type: Sequelize.INTEGER
+      },
       UserId: {
         type: Sequelize.INTEGER
       },

@@ -18,6 +18,8 @@ module.exports = (sequelize, DataTypes) => {
   Order.init({
     user_info: DataTypes.STRING,
     order: DataTypes.JSON,
+    remark: DataTypes.JSON,
+    totalAmount: DataTypes.INTEGER,
     UserId: DataTypes.INTEGER,
     StoreId: DataTypes.INTEGER
   }, {
