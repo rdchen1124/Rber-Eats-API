@@ -23,7 +23,11 @@ const userController = {
               user_name: user.username
             };
             const token = jwt.sign({payload, exp: Math.floor(Date.now() / 1000) + (60 * 60 * 24)}, private_key);
-            res.json({ok: 1, token});
+            res.json({ok: 1, token, user: {
+              id: user.id,
+              username: user.username,
+              favorites: user.favorites
+            }});
           }else{
             res.json({err: 'password is incorrect.'});
           }
