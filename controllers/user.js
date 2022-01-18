@@ -5,8 +5,8 @@ const db = require('../models');
 const User = db.User;
 const private_key = 'secret';
 const userController = {
-  getAuthUser: (req, res) => {
-    const {username, password} = req.query;
+  postAuthUser: (req, res) => {
+    const {username, password} = req.body;
     User.findOne({
       where: {
         username
