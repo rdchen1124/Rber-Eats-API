@@ -55,7 +55,7 @@ const orderController = {
           remark: order.remark,
           totalAmount: order.totalAmount,
           UserId: decode.payload.user_id,
-          StoreId: +order.store_id
+          StoreId: +order.StoreId
         }).then(() => {
           res.json({ok: 1});
         }).catch(err => {
