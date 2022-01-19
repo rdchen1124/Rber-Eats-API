@@ -52,6 +52,8 @@ const orderController = {
         Order.create({
           user_info: order.user_info,
           order: order.order,
+          remark: order.remark,
+          totalAmount: order.totalAmount,
           UserId: decode.payload.user_id,
           StoreId: +order.store_id
         }).then(() => {
