@@ -27,13 +27,17 @@ const orderController = {
         if(req.query._limit){
           const limit = +req.query._limit;
           searchOption.limit = limit;
+          if(req.query._page){
+            const page = +req.query._page;
+            const offset = (page - 1) * limit;
+            searchOption.offset = offset;
+          }
         }
-        Order.findAll(searchOption
+        Order.findAndCountAll(searchOption
         ).then(data => {
           console.log('data', JSON.stringify(data, null, 4));
-          // const orders = JSON.parse(JSON.parse(data[0].order));
-          // console.log('orders', orders);
-          res.json(data);
+          res.set('X-Total-Count', data.count);
+          res.json(data.rows);
         }).catch(err => {
           res.json({err: err.toString()});
         })
