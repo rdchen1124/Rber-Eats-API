@@ -22,7 +22,7 @@ const orderController = {
             {model: User, attributes: ['id', 'username'], as: "user"},
             {model: Store, attributes: ['id', 'name'], as: "store"}
           ],
-          attributes: ['id', 'user_info', 'order', 'createdAt']
+          attributes: ['id', 'user_info', 'order', 'remark', 'totalAmount']
         };
         if(req.query._limit){
           const limit = +req.query._limit;
