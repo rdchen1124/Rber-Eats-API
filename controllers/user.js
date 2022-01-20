@@ -49,8 +49,17 @@ const userController = {
         username: user.username,
         password: hash,
         favorites: user.favorites
-      }).then(() => {
-        res.json({ok: 1});
+      }).then((user) => {
+        const payload = {
+          user_id: user.id,
+          user_name: user.username
+        };
+        const token = jwt.sign({payload, exp: Math.floor(Date.now() / 1000) + (60 * 60 * 24)}, private_key);
+        res.json({ok: 1, token, user: {
+          id: user.id,
+          username: user.username,
+          favorites: user.favorites
+        }});
       }).catch(err => {
         res.json({err: err.toString()});
       })
